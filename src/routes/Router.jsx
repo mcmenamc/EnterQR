@@ -1,22 +1,29 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-//* Components
-import { NavBar } from "../components/NavBar";
-import { Footer } from "../components/Footer";
-
+import { Routes, Route } from "react-router-dom";
+import { RutasProtegidas } from "./RutasProtegidas";
 //* Views
 import { Home } from "../views/Home";
+import { SignIn } from "../views/Login";
+import Pruebas from "../views/Pruebas";
+import { Index } from "../views/Index";
+import { EscanerQR } from "../views/EscanerQR";
 
 
 export const Router = () => {
+
   return (
     <>
-      <NavBar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}  />
-        </Routes>
-      </BrowserRouter>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/home" element={
+          <RutasProtegidas>
+            <Home />
+          </RutasProtegidas>
+        } />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/pruebas" element={<Pruebas />} />
+        <Route path="/escaner" element={<EscanerQR />} />
+        <Route path="*" element={<h1>404</h1>} />
+      </Routes>
     </>
   );
 };
