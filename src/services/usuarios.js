@@ -10,3 +10,8 @@ export const GetUsuarios = async matricula => {
     const { data } = await axios.get(`${baseUrl}users/${matricula}`);
     return data;
 };
+
+export const GetAccesosAll = async (page) => { 
+    const { data } = await axios.get(`${baseUrl}acceso?page=${page}`);
+    return data;
+};

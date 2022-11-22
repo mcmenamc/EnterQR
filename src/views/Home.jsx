@@ -24,20 +24,20 @@ export const Home = () => {
   const [mostrarQR, setMostrarQR] = useState(false);
 
   useEffect(() => {
-    GetUsuarios(matricula)
-      .then(data => {
-        setUsuario(data);
 
-        let matricula = data.matricula;
-        matricula = matricula.slice(3);
-
-        while (true) {
-          if (matricula[0] == '0')
-            matricula = matricula.slice(1);
-          else break;
-        }
-        setImagenUsuario('https://sicea.utpuebla.edu.mx/control/fotos/aspirantes/' + matricula + '.jpg');
-      });
+    const obtenerUsuario = async () => {
+      const data = await GetUsuarios(matricula);
+      setUsuario(data);
+      let matricula2 = data.matricula;
+      matricula2 = matricula2.slice(3);
+      while (true) {
+        if (matricula2[0] == '0')
+          matricula2 = matricula2.slice(1);
+        else break;
+      }
+      setImagenUsuario('https://sicea.utpuebla.edu.mx/control/fotos/aspirantes/' + matricula2 + '.jpg');
+    };
+    obtenerUsuario();
   }, []);
 
 
@@ -100,6 +100,6 @@ export const Home = () => {
         </Card>
       </Grid>
 
-    </Container >
+    </Container>
   )
 };

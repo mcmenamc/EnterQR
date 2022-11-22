@@ -7,8 +7,6 @@ export const Footer = () => {
         <Paper sx={{
             marginTop: 'calc(10% + 60px)',
             width: '100%',
-            
-            width: '100%'
         }} component="footer" square >
             <Container maxWidth="lg">
                 <Box
